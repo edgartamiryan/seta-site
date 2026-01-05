@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>s-eta — Architectural Studio</title>
+  <meta name="description" content="s-eta — minimal architectural studio. Clear architecture, comfort, and meaning." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text: #111;
+      --muted: #777;
+      --line: #e5e5e5;
+      --bg: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+    }
+    section { padding: 96px 24px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1, h2 { font-weight: 300; }
+    h1 { font-size: clamp(2.2rem, 5vw, 4rem); }
+    h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-bottom: 48px; }
+    p { color: var(--muted); font-size: 1rem; max-width: 720px; }
+    .border-top { border-top: 1px solid var(--line); }
+
+    /* Intro */
+    .intro {
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      animation: introFade 1.2s ease forwards;
+      animation-delay: 1.6s;
+    }
+    .intro h1 { font-size: 4rem; letter-spacing: 0.1em; }
+    @keyframes introFade {
+      to { opacity: 0; visibility: hidden; }
+    }
+
+    /* Hero */
+    .hero { min-height: 100vh; display: flex; align-items: center; }
+    .hero p { margin-top: 24px; }
+
+    /* Gallery layout */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 32px;
+    }
+
+    /* Project card (image + caption) */
+    .project {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project .frame {
+      position: relative;
+      aspect-ratio: 3 / 4;
+      background: #f2f2f2;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .project img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1);
+      transition: transform .55s ease;
+      display: block;
+    }
+
+    .project .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.10);
+      opacity: 0;
+      transition: opacity .45s ease;
+    }
+
+    .project:hover img { transform: scale(1.035); }
+    .project:hover .overlay { opacity: 1; }
+
+    .caption {
+      padding: 12px 4px 0;
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.5;
+      max-width: 44ch;
+    }
+    .caption strong {
+      font-weight: 400;
+      color: #111;
+    }
+
+    /* Services */
+    ul { list-style: none; }
+    li { margin-bottom: 12px; color: var(--muted); }
+
+    /* Mobile journal feel */
+    @media (max-width: 768px) {
+      section { padding: 72px 20px; }
+      .intro h1 { font-size: 3rem; }
+      .gallery { gap: 24px; }
+      .caption { font-size: 0.95rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="intro"><h1>s-eta</h1></div>
+
+  <section class="hero">
+    <div class="container">
+      <h1>Clear minimal architecture<br>focused on comfort</h1>
+      <p>Studio ETA is an architectural practice creating calm, functional and timeless spaces. Our work is based on clarity, proportions and human scale.</p>
+    </div>
+  </section>
+
+  <section class="border-top">
+    <div class="container">
+      <h2>About Studio</h2>
+      <p>s-eta is a contemporary architectural studio based in Armenia. We design residential, public and mixed-use architecture with a minimalist and rational approach.</p>
+    </div>
+  </section>
+
+  <section class="border-top">
+    <div class="container">
+      <h2>Projects</h2>
+
+      <!--
+        HOW TO ADD YOUR PROJECTS:
+        1) Put images into /images folder (next to this index.html)
+        2) Change image file names below (project-01.jpg etc.)
+        3) Edit title / meta / description text
+      -->
+
+      <div class="gallery">
+
+        <a class="project" href="#">
+          <div class="frame">
+            <img src="images/project-01.jpg" alt="Private House — Yerevan">
+            <div class="overlay"></div>
+          </div>
+          <div class="caption">
+            <strong>Private House</strong><br>
+            Yerevan · 2024 · 280 m²<br>
+            Calm minimal residential architecture focused on comfort and light.
+          </div>
+        </a>
+
+        <a class="project" href="#">
+          <div class="frame">
+            <img src="images/project-02.jpg" alt="Residential Complex — Armenia">
+            <div class="overlay"></div>
+          </div>
+          <div class="caption">
+            <strong>Residential Complex</strong><br>
+            Armenia · Concept · 12 500 m²<br>
+            Urban housing project with clear structure and human scale.
+          </div>
+        </a>
+
+        <a class="project" href="#">
+          <div class="frame">
+            <img src="images/project-03.jpg" alt="Apartment Interior — Yerevan">
+            <div class="overlay"></div>
+          </div>
+          <div class="caption">
+            <strong>Apartment Interior</strong><br>
+            Yerevan · 2023 · 120 m²<br>
+            Minimal interior focused on material honesty and calm atmosphere.
+          </div>
+        </a>
+
+        <a class="project" href="#">
+          <div class="frame">
+            <img src="images/project-04.jpg" alt="Public Space — Armenia">
+            <div class="overlay"></div>
+          </div>
+          <div class="caption">
+            <strong>Public Space</strong><br>
+            Armenia · 2022 · 2 100 m²<br>
+            A quiet civic landscape with clear paths and controlled geometry.
+          </div>
+        </a>
+
+        <a class="project" href="#">
+          <div class="frame">
+            <img src="images/project-05.jpg" alt="Villa Concept — Armenia">
+            <div class="overlay"></div>
+          </div>
+          <div class="caption">
+            <strong>Villa Concept</strong><br>
+            Armenia · Concept · 360 m²<br>
+            Pure volumes and strong proportions shaped by daylight.
+          </div>
+        </a>
+
+        <a class="project" href="#">
+          <div class="frame">
+            <img src="images/project-06.jpg" alt="Commercial Interior — Yerevan">
+            <div class="overlay"></div>
+          </div>
+          <div class="caption">
+            <strong>Commercial Interior</strong><br>
+            Yerevan · 2024 · 95 m²<br>
+            Minimal retail space with warm materials and clean detailing.
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="border-top">
+    <div class="container">
+      <h2>Services</h2>
+      <ul>
+        <li>Architectural concept & design</li>
+        <li>Residential & public buildings</li>
+        <li>Interior architecture</li>
+        <li>Working documentation</li>
+        <li>Author supervision</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="border-top">
+    <div class="container">
+      <h2>Contact</h2>
+      <p>Email: studio@studio-eta.com<br>Yerevan, Armenia</p>
+    </div>
+  </section>
+
+</body>
+</html>
